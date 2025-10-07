@@ -391,6 +391,10 @@
             color: var(--dark);
         }
         
+        .signature-title {
+            min-height: 3.2em; /* This ensures all title areas have the same minimum height */
+        }
+        
         .signature-nip {
             font-size: 0.9rem;
             margin-top: 0.2rem;
@@ -974,22 +978,28 @@
             
             <div class="signature-section">
                 <div class="signature-box">
-                    <p>Mengetahui,</p>
-                    <p>Kepala SMK N 1 Purbalingga</p>
+                    <div class="signature-title">
+                        <p>Mengetahui,</p>
+                        <p>Kepala SMK N 1 Purbalingga</p>
+                    </div>
                     <div class="signature-line"></div>
                     <p class="signature-name">Maryono, S.Pd., M.Si.</p>
                     <p class="signature-nip">NIP. 19660701 200012 1 002</p>
                 </div>
                 
                 <div class="signature-box">
-                    <p>WKS 1 Kurikulum,</p>
+                    <div class="signature-title">
+                        <p>WKS 1 Kurikulum,</p>
+                    </div>
                     <div class="signature-line"></div>
                     <p class="signature-name">Satyo Nugroho, S.Kom.</p>
                     <p class="signature-nip">NIP. 19780714 200903 1 006</p>
                 </div>
                 
                 <div class="signature-box">
-                    <p>Guru Wali,</p>
+                    <div class="signature-title">
+                        <p>Guru Wali,</p>
+                    </div>
                     <div class="signature-line"></div>
                     <p class="signature-name" id="teacher-signature">........................................</p>
                     <p class="signature-nip" id="teacher-nip-signature">NIP. ........................................</p>
@@ -1109,4 +1119,5 @@
     </script>
 </body>
 </html>
+
 
