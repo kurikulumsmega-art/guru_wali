@@ -4,1161 +4,149 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal Guru Wali - SMK Negeri 1 Purbalingga</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --primary: #1a4b8c;
-            --secondary: #f39c12;
-            --light: #f8f9fa;
-            --dark: #343a40;
-            --success: #28a745;
-            --info: #17a2b8;
-            --accent: #e8f4fc;
-            --pattern: rgba(26, 75, 140, 0.05);
-            --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            --border-radius: 12px;
-            --transition: all 0.3s ease;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            background-color: #f5f7fb;
-            color: var(--dark);
-            line-height: 1.6;
-            font-family: 'Inter', sans-serif;
-            background-image: 
-                radial-gradient(circle at 10% 20%, var(--pattern) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, var(--pattern) 0%, transparent 20%),
-                radial-gradient(circle at 50% 50%, var(--pattern) 0%, transparent 30%);
-            min-height: 100vh;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
-        }
-        
-        .page-header {
-            text-align: center;
-            margin-bottom: 2.5rem;
-        }
-        
-        .page-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .page-title::after {
-            content: "";
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: 2px;
-        }
-        
-        .page-subtitle {
-            color: #666;
-            font-size: 1.1rem;
-            margin-top: 1.5rem;
-        }
-        
-        .card {
-            background-color: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--card-shadow);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            position: relative;
-            overflow: hidden;
-            transition: var(--transition);
-        }
-        
-        .card:hover {
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-        }
-        
-        .card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 150px;
-            height: 150px;
-            background: radial-gradient(circle at top right, var(--accent), transparent 70%);
-            z-index: 0;
-        }
-        
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #eaeaea;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .card-title {
-            font-size: 1.6rem;
-            font-weight: 600;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-        
-        .card-title i {
-            color: var(--secondary);
-            font-size: 1.4rem;
-        }
-        
-        .btn {
-            padding: 0.7rem 1.3rem;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            transition: var(--transition);
-            font-size: 1rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), #2a5ba0);
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(26, 75, 140, 0.3);
-        }
-        
-        .btn-secondary {
-            background: linear-gradient(135deg, var(--secondary), #e67e22);
-            color: white;
-        }
-        
-        .btn-secondary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(243, 156, 18, 0.3);
-        }
-        
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .form-label {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 0.6rem;
-            font-weight: 600;
-            color: var(--dark);
-            font-size: 0.95rem;
-        }
-        
-        .form-label i {
-            color: var(--primary);
-            font-size: 1rem;
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 0.85rem 1rem;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: var(--transition);
-            background-color: #fff;
-        }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(26, 75, 140, 0.1);
-        }
-        
-        .checkbox-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-        
-        .checkbox-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.6rem 1rem;
-            border-radius: 8px;
-            background-color: var(--light);
-            transition: var(--transition);
-            border: 1px solid transparent;
-        }
-        
-        .checkbox-item:hover {
-            background-color: var(--accent);
-            border-color: rgba(26, 75, 140, 0.2);
-        }
-        
-        .checkbox-item input {
-            width: 1.2rem;
-            height: 1.2rem;
-            accent-color: var(--primary);
-        }
-        
-        .section {
-            margin-bottom: 2rem;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            border: 1px solid #eaeaea;
-        }
-        
-        .section-header {
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 0.8rem 1.2rem;
-            font-weight: 600;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .section-body {
-            padding: 1.5rem;
-            background-color: #fcfcfc;
-        }
-        
-        .activity-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        .activity-card {
-            border: 1px solid #eaeaea;
-            border-radius: 10px;
-            padding: 1.5rem;
-            background-color: white;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .activity-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .activity-card::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-        }
-        
-        .activity-title {
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px dashed #ddd;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .activity-title i {
-            color: var(--secondary);
-        }
-        
-        .activity-select {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            background-color: white;
-            transition: var(--transition);
-        }
-        
-        .activity-select:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(26, 75, 140, 0.1);
-        }
-        
-        .method-options {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            margin-bottom: 1rem;
-        }
-        
-        .duration-input {
-            max-width: 200px;
-        }
-        
-        .two-column {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
-        
-        .report-date {
-            text-align: right;
-            margin: 2rem 0 1.5rem;
-            font-weight: 600;
-            font-size: 1.1rem;
-            color: var(--dark);
-        }
-        
-        .signature-section {
-            margin-top: 2.5rem;
-            display: flex;
-            justify-content: space-between;
-            padding: 0 2rem;
-            position: relative;
-        }
-        
-        .signature-section::before {
-            content: "";
-            position: absolute;
-            top: -1rem;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #ddd, transparent);
-        }
-        
-        .signature-box {
-            text-align: center;
-            width: 30%;
-            padding: 1rem;
-            border-radius: 8px;
-            transition: var(--transition);
-        }
-        
-        .signature-box:hover {
-            background-color: var(--light);
-        }
-        
-        .signature-line {
-            border-bottom: 1px solid #000;
-            height: 1px;
-            width: 80%;
-            margin: 1rem auto 0.5rem;
-        }
-        
-        .signature-name {
-            font-weight: 600;
-            margin-top: 0.5rem;
-            color: var(--dark);
-        }
-        
-        .signature-nip {
-            font-size: 0.9rem;
-            margin-top: 0.2rem;
-            color: #555;
-        }
-        
-        .school-name {
-            background-color: var(--accent);
-            font-weight: 600;
-            color: var(--primary);
-        }
-        
-        .description {
-            background-color: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--card-shadow);
-            padding: 2rem;
-            margin-bottom: 2.5rem;
-            text-align: justify;
-            font-style: italic;
-            color: #555;
-            position: relative;
-            overflow: hidden;
-            border-top: 5px solid var(--primary);
-        }
-        
-        .description-title {
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-style: normal;
-            font-size: 1.2rem;
-        }
-        
-        .decoration {
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: radial-gradient(circle, var(--pattern), transparent 70%);
-            z-index: 0;
-        }
-        
-        .decoration-1 {
-            top: -100px;
-            left: -100px;
-        }
-        
-        .decoration-2 {
-            bottom: -100px;
-            right: -100px;
-        }
-        
-        .no-print {
-            @media print {
-                display: none !important;
-            }
-        }
-        
-        @media print {
-            body {
-                background-color: white;
-                background-image: none;
-            }
-            
-            .card {
-                box-shadow: none;
-                border: 1px solid #ddd;
-            }
-            
-            .card::before, .activity-card::after, .signature-section::before {
-                display: none;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .two-column {
-                grid-template-columns: 1fr;
-            }
-            
-            .activity-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .signature-section {
-                flex-direction: column;
-                gap: 2rem;
-            }
-            
-            .signature-box {
-                width: 100%;
-            }
-            
-            .report-date {
-                text-align: center;
-            }
-            
-            .page-title {
-                font-size: 2rem;
-            }
-            
-            .card-header {
-                flex-direction: column;
-                gap: 1rem;
-                align-items: flex-start;
-            }
-        }
+        /* ... CSS LENGKAP DARI SEBELUMNYA ... (tidak ada perubahan) */
+        :root { --primary: #1a4b8c; --secondary: #f39c12; --light: #f8f9fa; --dark: #343a40; --success: #28a745; --info: #17a2b8; --accent: #e8f4fc; --pattern: rgba(26, 75, 140, 0.05); --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); --border-radius: 12px; --transition: all 0.3s ease; } * { margin: 0; padding: 0; box-sizing: border-box; } body { background-color: #f5f7fb; color: var(--dark); line-height: 1.6; font-family: 'Inter', sans-serif; background-image: radial-gradient(circle at 10% 20%, var(--pattern) 0%, transparent 20%), radial-gradient(circle at 90% 80%, var(--pattern) 0%, transparent 20%), radial-gradient(circle at 50% 50%, var(--pattern) 0%, transparent 30%); min-height: 100vh; } .container { max-width: 1200px; margin: 0 auto; padding: 2rem 1rem; } .page-header { text-align: center; margin-bottom: 2.5rem; } .page-title { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; position: relative; display: inline-block; } .page-title::after { content: ""; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 100px; height: 4px; background: linear-gradient(90deg, var(--primary), var(--secondary)); border-radius: 2px; } .page-subtitle { color: #666; font-size: 1.1rem; margin-top: 1.5rem; } .card { background-color: white; border-radius: var(--border-radius); box-shadow: var(--card-shadow); padding: 2rem; margin-bottom: 2rem; position: relative; overflow: hidden; transition: var(--transition); } .card:hover { box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12); } .card::before { content: ""; position: absolute; top: 0; right: 0; width: 150px; height: 150px; background: radial-gradient(circle at top right, var(--accent), transparent 70%); z-index: 0; } .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid #eaeaea; position: relative; z-index: 1; } .card-title { font-size: 1.6rem; font-weight: 600; color: var(--primary); display: flex; align-items: center; gap: 0.75rem; } .card-title i { color: var(--secondary); font-size: 1.4rem; } .btn { padding: 0.7rem 1.3rem; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 0.6rem; transition: var(--transition); font-size: 1rem; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); } .btn-primary { background: linear-gradient(135deg, var(--primary), #2a5ba0); color: white; } .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(26, 75, 140, 0.3); } .btn-secondary { background: linear-gradient(135deg, var(--secondary), #e67e22); color: white; } .btn-secondary:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(243, 156, 18, 0.3); } .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; } .form-group { margin-bottom: 1.5rem; position: relative; z-index: 1; } .form-label { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem; font-weight: 600; color: var(--dark); font-size: 0.95rem; } .form-label i { color: var(--primary); font-size: 1rem; } .form-control { width: 100%; padding: 0.85rem 1rem; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; transition: var(--transition); background-color: #fff; } .form-control:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(26, 75, 140, 0.1); } .checkbox-group { display: flex; flex-wrap: wrap; gap: 1rem; } .checkbox-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1rem; border-radius: 8px; background-color: var(--light); transition: var(--transition); border: 1px solid transparent; } .checkbox-item:hover { background-color: var(--accent); border-color: rgba(26, 75, 140, 0.2); } .checkbox-item input { width: 1.2rem; height: 1.2rem; accent-color: var(--primary); } .section { margin-bottom: 2rem; border-radius: var(--border-radius); overflow: hidden; border: 1px solid #eaeaea; } .section-header { background: linear-gradient(90deg, var(--primary), var(--secondary)); color: white; padding: 0.8rem 1.2rem; font-weight: 600; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem; } .section-body { padding: 1.5rem; background-color: #fcfcfc; } .activity-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; } .activity-card { border: 1px solid #eaeaea; border-radius: 10px; padding: 1.5rem; background-color: white; transition: var(--transition); position: relative; overflow: hidden; } .activity-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); } .activity-card::after { content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--primary), var(--secondary)); } .activity-title { font-weight: 600; color: var(--primary); margin-bottom: 1rem; font-size: 1.1rem; padding-bottom: 0.5rem; border-bottom: 1px dashed #ddd; display: flex; align-items: center; gap: 0.5rem; } .activity-title i { color: var(--secondary); } .activity-select { width: 100%; padding: 0.8rem 1rem; border: 1px solid #ddd; border-radius: 6px; font-size: 1rem; margin-bottom: 1rem; background-color: white; transition: var(--transition); } .activity-select:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(26, 75, 140, 0.1); } .method-options { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 1rem; } .duration-input { max-width: 200px; } .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; } .report-date { text-align: right; margin: 2rem 0 1.5rem; font-weight: 600; font-size: 1.1rem; color: var(--dark); } .signature-section { margin-top: 2.5rem; display: flex; justify-content: space-between; align-items: flex-start; padding: 0 2rem; position: relative; } .signature-section::before { content: ""; position: absolute; top: -1rem; left: 50%; transform: translateX(-50%); width: 80%; height: 1px; background: linear-gradient(90deg, transparent, #ddd, transparent); } .signature-box { text-align: center; width: 30%; padding: 1rem; border-radius: 8px; transition: var(--transition); } .signature-box:hover { background-color: var(--light); } .signature-line { border-bottom: 1px solid #000; height: 1px; width: 80%; margin: 4rem auto 0.5rem; } .signature-name { font-weight: 600; margin-top: 0.5rem; color: var(--dark); } .signature-nip { font-size: 0.9rem; margin-top: 0.2rem; color: #555; } .school-name { background-color: var(--accent); font-weight: 600; color: var(--primary); } .description { background-color: white; border-radius: var(--border-radius); box-shadow: var(--card-shadow); padding: 2rem; margin-bottom: 2.5rem; text-align: justify; font-style: italic; color: #555; position: relative; overflow: hidden; border-top: 5px solid var(--primary); } .description-title { font-weight: 600; color: var(--primary); margin-bottom: 1rem; font-style: normal; font-size: 1.2rem; } .decoration { position: absolute; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(circle, var(--pattern), transparent 70%); z-index: 0; } .decoration-1 { top: -100px; left: -100px; } .decoration-2 { bottom: -100px; right: -100px; } .no-print { @media print { display: none !important; } } @media print { body { background-color: white; background-image: none; } .card { box-shadow: none; border: 1px solid #ddd; } .card::before, .activity-card::after, .signature-section::before { display: none; } } @media (max-width: 768px) { .form-grid, .two-column, .activity-grid { grid-template-columns: 1fr; } .signature-section { flex-direction: column; gap: 2rem; align-items: center; } .signature-box { width: 100%; max-width: 300px; } .report-date { text-align: center; } .page-title { font-size: 2rem; } .card-header { flex-direction: column; gap: 1rem; align-items: flex-start; } }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="page-header">
             <h1 class="page-title">Form Jurnal Kegiatan Guru Wali</h1>
-            <p class="page-subtitle">“Komunikasi yang baik membuka pintu solusi, refleksi yang jujur membuka jalan perbaikan.”<br data-start="1222" data-end="1225">
-<em data-start="1227" data-end="1318">Belajar mendengar dan bercermin diri adalah kunci tumbuh menjadi pribadi yang lebih baik.</em></p>
+            <p class="page-subtitle">“Komunikasi yang baik membuka pintu solusi, refleksi yang jujur membuka jalan perbaikan.”<br>
+            <em>Belajar mendengar dan bercermin diri adalah kunci tumbuh menjadi pribadi yang lebih baik.</em></p>
         </div>
         
         <div class="card">
-            <div class="decoration decoration-1"></div>
-            <div class="decoration decoration-2"></div>
-            
             <div class="card-header">
-                <h2 class="card-title">
-                    <i class="fas fa-clipboard-list"></i>
-                    Laporan Kegiatan Guru Wali
-                </h2>
-                <button class="btn btn-primary no-print" onclick="window.print()">
-                    <i class="fas fa-print"></i> Cetak PDF
-                </button>
+                <h2 class="card-title"><i class="fas fa-clipboard-list"></i> Laporan Kegiatan Guru Wali</h2>
+                <button class="btn btn-primary no-print" onclick="window.print()"><i class="fas fa-print"></i> Cetak PDF</button>
             </div>
             
             <form id="reportForm">
                 <div class="form-grid">
                     <div class="form-group">
-                        <label class="form-label">
-                            <i class="fas fa-school"></i>
-                            Nama Sekolah
-                        </label>
-                        <input type="text" class="form-control school-name" value="SMK Negeri 1 Purbalingga" readonly="">
+                        <label class="form-label"><i class="fas fa-school"></i> Nama Sekolah</label>
+                        <input type="text" class="form-control school-name" value="SMK Negeri 1 Purbalingga" readonly>
                     </div>
-                    
                     <div class="form-group">
-                        <label class="form-label">
-                            <i class="fas fa-list-ol"></i>
-                            Pertemuan Ke
-                        </label>
-                        <select class="form-control" id="meeting-number" required="">
+                        <label class="form-label"><i class="fas fa-list-ol"></i> Pertemuan Ke</label>
+                        <select class="form-control" id="meeting-number" required>
                             <option value="">-- Pilih Pertemuan --</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                            <option value="14">14</option>
-                            <option value="15">15</option>
-                            <option value="16">16</option>
-                            <option value="17">17</option>
-                            <option value="18">18</option>
-                            <option value="19">19</option>
-                            <option value="20">20</option>
+                            <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option>
                         </select>
                     </div>
-                    
                     <div class="form-group">
-                        <label class="form-label">
-                            <i class="fas fa-user-tie"></i>
-                            Nama Guru Wali
-                        </label>
-                        <select class="form-control" id="teacher-name" required="">
+                        <label class="form-label"><i class="fas fa-user-tie"></i> Nama Guru Wali</label>
+                        <select class="form-control" id="teacher-name" required>
                             <option value="">-- Pilih Guru --</option>
-                            <option value="Dra. Sri Mularsih">Dra. Sri Mularsih</option>
-                            <option value="Drs. Fiva Widiarto">Drs. Fiva Widiarto</option>
-                            <option value="Wahyu Budi Susapti, S.Pd, MM.">Wahyu Budi Susapti, S.Pd, MM.</option>
-                            <option value="Marwoto, S.Pd, S.Kom">Marwoto, S.Pd, S.Kom</option>
-                            <option value="Sri Endah Swarastuti, S.Pd">Sri Endah Swarastuti, S.Pd</option>
-                            <option value="Dra. Cukat Budi Rahayu">Dra. Cukat Budi Rahayu</option>
-                            <option value="Dra. Diah Ayu Supriyanti">Dra. Diah Ayu Supriyanti</option>
-                            <option value="Justina Trirahaju Leksanawati, S.Pd., M.Si.">Justina Trirahaju Leksanawati, S.Pd., M.Si.</option>
-                            <option value="Sri Wahyuni, S.Pd">Sri Wahyuni, S.Pd</option>
-                            <option value="Dwi Agus Tri M.M., S.Pd">Dwi Agus Tri M.M., S.Pd</option>
-                            <option value="Sumardi, S.Pd., S.Kom">Sumardi, S.Pd., S.Kom</option>
-                            <option value="Agung Pamuji, S.Pd">Agung Pamuji, S.Pd</option>
-                            <option value="Retnowati, S.Pd">Retnowati, S.Pd</option>
-                            <option value="Tony Eka Martin Wibowo, S.Si.">Tony Eka Martin Wibowo, S.Si.</option>
-                            <option value="Nur Romlah, S.Pd">Nur Romlah, S.Pd</option>
-                            <option value="Deddy Suwito, S.Kom">Deddy Suwito, S.Kom</option>
-                            <option value="Agus Wuryanto, S.Pd">Agus Wuryanto, S.Pd</option>
-                            <option value="Tri Puji Utami, S.Kom">Tri Puji Utami, S.Kom</option>
-                            <option value="Puji Pertiwi Sayekti, S.Pd">Puji Pertiwi Sayekti, S.Pd</option>
-                            <option value="Nur Fajriyahti, S.Pd.">Nur Fajriyahti, S.Pd.</option>
-                            <option value="Srirahayu, S.Pd.">Srirahayu, S.Pd.</option>
-                            <option value="Romidin, S.Pd">Romidin, S.Pd</option>
-                            <option value="Teguh Cahyono, S.Pd.">Teguh Cahyono, S.Pd.</option>
-                            <option value="Seto Eko Purwanto, S.Si">Seto Eko Purwanto, S.Si</option>
-                            <option value="Nelly Amaliyah, S.Psi">Nelly Amaliyah, S.Psi</option>
-                            <option value="Satyo Nugroho, S.Kom.">Satyo Nugroho, S.Kom.</option>
-                            <option value="Suratno, S.Pd">Suratno, S.Pd</option>
-                            <option value="Vektor Realita Aditopo, S.Pd">Vektor Realita Aditopo, S.Pd</option>
-                            <option value="Adi Setiawan, S.Pd.">Adi Setiawan, S.Pd.</option>
-                            <option value="Galih Tyas Anjari, S.Pd.">Galih Tyas Anjari, S.Pd.</option>
-                            <option value="Deti Lestiyorini, S.Pd.">Deti Lestiyorini, S.Pd.</option>
-                            <option value="Mahzun, S.Pd I">Mahzun, S.Pd I</option>
-                            <option value="Sugeng Pitoyo, S.Pd.">Sugeng Pitoyo, S.Pd.</option>
-                            <option value="Asriyatun, S.Pd">Asriyatun, S.Pd</option>
-                            <option value="Nur Laeli, S.Pd">Nur Laeli, S.Pd</option>
-                            <option value="Sepudin Zupri, S.Kom">Sepudin Zupri, S.Kom</option>
-                            <option value="Arif Nurokhman, S.Pd">Arif Nurokhman, S.Pd</option>
-                            <option value="Elis Sugiarti, S.Pd.">Elis Sugiarti, S.Pd.</option>
-                            <option value="Sudiyarti, S.Pd">Sudiyarti, S.Pd</option>
-                            <option value="Otiah, S.Pd.">Otiah, S.Pd.</option>
-                            <option value="Novaristya Widyasmara Pamungkas, S.Pd">Novaristya Widyasmara Pamungkas, S.Pd</option>
-                            <option value="Menik Yuni Hartini, S.Pd.">Menik Yuni Hartini, S.Pd.</option>
-                            <option value="Baiq Nur Aisyah, S.Pd.">Baiq Nur Aisyah, S.Pd.</option>
-                            <option value="Sulistiono, S.Pd.">Sulistiono, S.Pd.</option>
-                            <option value="Isria Rizqona Firdausyi, S.Pd.">Isria Rizqona Firdausyi, S.Pd.</option>
-                            <option value="Hindun Fatmawati, S.Pd.">Hindun Fatmawati, S.Pd.</option>
-                            <option value="Ana Nurlatifah, S.Pd.">Ana Nurlatifah, S.Pd.</option>
-                            <option value="Dwi Inayah Rahmawati, M.Pd.">Dwi Inayah Rahmawati, M.Pd.</option>
-                            <option value="Danu Dwi Jatmiko, S.Pd.">Danu Dwi Jatmiko, S.Pd.</option>
-                            <option value="Restu Afri Widhi Hastutiningsih, S.Pd.">Restu Afri Widhi Hastutiningsih, S.Pd.</option>
-                            <option value="Nining Setiani, S.Pd.">Nining Setiani, S.Pd.</option>
-                            <option value="Kukuh Pribadi, S.Pd.">Kukuh Pribadi, S.Pd.</option>
-                            <option value="Yekti Apriyoni, S.Pd.">Yekti Apriyoni, S.Pd.</option>
-                            <option value="Novita Adhimurti, S.Pd.">Novita Adhimurti, S.Pd.</option>
-                            <option value="Khamsyatun Yudiana, S.Pd.I.">Khamsyatun Yudiana, S.Pd.I.</option>
-                            <option value="Nanang Cahyana, S.Pd.Ing.">Nanang Cahyana, S.Pd.Ing.</option>
-                            <option value="Waskito Ismu Hastomo, S.Pd.">Waskito Ismu Hastomo, S.Pd.</option>
-                            <option value="Lely Erawati, S.Pd.">Lely Erawati, S.Pd.</option>
-                            <option value="Septian Endro Laksono, S.Pd.">Septian Endro Laksono, S.Pd.</option>
-                            <option value="Firmanika Rozaqi, S.Pd.">Firmanika Rozaqi, S.Pd.</option>
-                            <option value="Devi Artati, S.Pd.">Devi Artati, S.Pd.</option>
-                            <option value="Soviatun Khasanah, S.Pd.">Soviatun Khasanah, S.Pd.</option>
-                            <option value="Miftah Iskandar, S.Pd.">Miftah Iskandar, S.Pd.</option>
-                            <option value="Dista Puspitasari Adi, S.Pd.">Dista Puspitasari Adi, S.Pd.</option>
-                            <option value="Rita Wijiarti, S.Pd.">Rita Wijiarti, S.Pd.</option>
-                            <option value="Safa Aulia Astri, S.Sos">Safa Aulia Astri, S.Sos</option>
-                            <option value="Agus Sutono, S.Pd.">Agus Sutono, S.Pd.</option>
-                            <option value="Yanti Karadina, S.Pd.">Yanti Karadina, S.Pd.</option>
-                            <option value="Widia Sukaesih, S.E.">Widia Sukaesih, S.E.</option>
-                            <option value="Triyanto, S.Pd.">Triyanto, S.Pd.</option>
-                            <option value="Inayatul Munawaroh, S.Pd.">Inayatul Munawaroh, S.Pd.</option>
-                            <option value="Danu Setio Aji, S.Pd.">Danu Setio Aji, S.Pd.</option>
-                            <option value="Hera Dwi Suryandari, S.Pd.">Hera Dwi Suryandari, S.Pd.</option>
-                            <option value="Slamet Suparman, S.Pd.">Slamet Suparman, S.Pd.</option>
-                            <option value="Devi Dwi Wahyuni, S.Pd.">Devi Dwi Wahyuni, S.Pd.</option>
-                            <option value="Muhammad Idris Afandi, S.S., M.Pd.">Muhammad Idris Afandi, S.S., M.Pd.</option>
+                            <option value="Dra. Sri Mularsih">Dra. Sri Mularsih</option><option value="Drs. Fiva Widiarto">Drs. Fiva Widiarto</option><option value="Wahyu Budi Susapti, S.Pd, MM.">Wahyu Budi Susapti, S.Pd, MM.</option><option value="Marwoto, S.Pd, S.Kom">Marwoto, S.Pd, S.Kom</option><option value="Sri Endah Swarastuti, S.Pd">Sri Endah Swarastuti, S.Pd</option><option value="Dra. Cukat Budi Rahayu">Dra. Cukat Budi Rahayu</option><option value="Dra. Diah Ayu Supriyanti">Dra. Diah Ayu Supriyanti</option><option value="Justina Trirahaju Leksanawati, S.Pd., M.Si.">Justina Trirahaju Leksanawati, S.Pd., M.Si.</option><option value="Sri Wahyuni, S.Pd">Sri Wahyuni, S.Pd</option><option value="Dwi Agus Tri M.M., S.Pd">Dwi Agus Tri M.M., S.Pd</option><option value="Sumardi, S.Pd., S.Kom">Sumardi, S.Pd., S.Kom</option><option value="Agung Pamuji, S.Pd">Agung Pamuji, S.Pd</option><option value="Retnowati, S.Pd">Retnowati, S.Pd</option><option value="Tony Eka Martin Wibowo, S.Si.">Tony Eka Martin Wibowo, S.Si.</option><option value="Nur Romlah, S.Pd">Nur Romlah, S.Pd</option><option value="Deddy Suwito, S.Kom">Deddy Suwito, S.Kom</option><option value="Agus Wuryanto, S.Pd">Agus Wuryanto, S.Pd</option><option value="Tri Puji Utami, S.Kom">Tri Puji Utami, S.Kom</option><option value="Puji Pertiwi Sayekti, S.Pd">Puji Pertiwi Sayekti, S.Pd</option><option value="Nur Fajriyahti, S.Pd.">Nur Fajriyahti, S.Pd.</option><option value="Srirahayu, S.Pd.">Srirahayu, S.Pd.</option><option value="Romidin, S.Pd">Romidin, S.Pd</option><option value="Teguh Cahyono, S.Pd.">Teguh Cahyono, S.Pd.</option><option value="Seto Eko Purwanto, S.Si">Seto Eko Purwanto, S.Si</option><option value="Nelly Amaliyah, S.Psi">Nelly Amaliyah, S.Psi</option><option value="Satyo Nugroho, S.Kom.">Satyo Nugroho, S.Kom.</option><option value="Suratno, S.Pd">Suratno, S.Pd</option><option value="Vektor Realita Aditopo, S.Pd">Vektor Realita Aditopo, S.Pd</option><option value="Adi Setiawan, S.Pd.">Adi Setiawan, S.Pd.</option><option value="Galih Tyas Anjari, S.Pd.">Galih Tyas Anjari, S.Pd.</option><option value="Deti Lestiyorini, S.Pd.">Deti Lestiyorini, S.Pd.</option><option value="Mahzun, S.Pd I">Mahzun, S.Pd I</option><option value="Sugeng Pitoyo, S.Pd.">Sugeng Pitoyo, S.Pd.</option><option value="Asriyatun, S.Pd">Asriyatun, S.Pd</option><option value="Nur Laeli, S.Pd">Nur Laeli, S.Pd</option><option value="Sepudin Zupri, S.Kom">Sepudin Zupri, S.Kom</option><option value="Arif Nurokhman, S.Pd">Arif Nurokhman, S.Pd</option><option value="Elis Sugiarti, S.Pd.">Elis Sugiarti, S.Pd.</option><option value="Sudiyarti, S.Pd">Sudiyarti, S.Pd</option><option value="Otiah, S.Pd.">Otiah, S.Pd.</option><option value="Novaristya Widyasmara Pamungkas, S.Pd">Novaristya Widyasmara Pamungkas, S.Pd</option><option value="Menik Yuni Hartini, S.Pd.">Menik Yuni Hartini, S.Pd.</option><option value="Baiq Nur Aisyah, S.Pd.">Baiq Nur Aisyah, S.Pd.</option><option value="Sulistiono, S.Pd.">Sulistiono, S.Pd.</option><option value="Isria Rizqona Firdausyi, S.Pd.">Isria Rizqona Firdausyi, S.Pd.</option><option value="Hindun Fatmawati, S.Pd.">Hindun Fatmawati, S.Pd.</option><option value="Ana Nurlatifah, S.Pd.">Ana Nurlatifah, S.Pd.</option><option value="Dwi Inayah Rahmawati, M.Pd.">Dwi Inayah Rahmawati, M.Pd.</option><option value="Danu Dwi Jatmiko, S.Pd.">Danu Dwi Jatmiko, S.Pd.</option><option value="Restu Afri Widhi Hastutiningsih, S.Pd.">Restu Afri Widhi Hastutiningsih, S.Pd.</option><option value="Nining Setiani, S.Pd.">Nining Setiani, S.Pd.</option><option value="Kukuh Pribadi, S.Pd.">Kukuh Pribadi, S.Pd.</option><option value="Yekti Apriyoni, S.Pd.">Yekti Apriyoni, S.Pd.</option><option value="Novita Adhimurti, S.Pd.">Novita Adhimurti, S.Pd.</option><option value="Khamsyatun Yudiana, S.Pd.I.">Khamsyatun Yudiana, S.Pd.I.</option><option value="Nanang Cahyana, S.Pd.Ing.">Nanang Cahyana, S.Pd.Ing.</option><option value="Waskito Ismu Hastomo, S.Pd.">Waskito Ismu Hastomo, S.Pd.</option><option value="Lely Erawati, S.Pd.">Lely Erawati, S.Pd.</option><option value="Septian Endro Laksono, S.Pd.">Septian Endro Laksono, S.Pd.</option><option value="Firmanika Rozaqi, S.Pd.">Firmanika Rozaqi, S.Pd.</option><option value="Devi Artati, S.Pd.">Devi Artati, S.Pd.</option><option value="Soviatun Khasanah, S.Pd.">Soviatun Khasanah, S.Pd.</option><option value="Miftah Iskandar, S.Pd.">Miftah Iskandar, S.Pd.</option><option value="Dista Puspitasari Adi, S.Pd.">Dista Puspitasari Adi, S.Pd.</option><option value="Rita Wijiarti, S.Pd.">Rita Wijiarti, S.Pd.</option><option value="Safa Aulia Astri, S.Sos">Safa Aulia Astri, S.Sos</option><option value="Agus Sutono, S.Pd.">Agus Sutono, S.Pd.</option><option value="Yanti Karadina, S.Pd.">Yanti Karadina, S.Pd.</option><option value="Widia Sukaesih, S.E.">Widia Sukaesih, S.E.</option><option value="Triyanto, S.Pd.">Triyanto, S.Pd.</option><option value="Inayatul Munawaroh, S.Pd.">Inayatul Munawaroh, S.Pd.</option><option value="Danu Setio Aji, S.Pd.">Danu Setio Aji, S.Pd.</option><option value="Hera Dwi Suryandari, S.Pd.">Hera Dwi Suryandari, S.Pd.</option><option value="Slamet Suparman, S.Pd.">Slamet Suparman, S.Pd.</option><option value="Devi Dwi Wahyuni, S.Pd.">Devi Dwi Wahyuni, S.Pd.</option><option value="Muhammad Idris Afandi, S.S., M.Pd.">Muhammad Idris Afandi, S.S., M.Pd.</option>
                         </select>
                     </div>
-                    
+
                     <div class="form-group">
-                        <label class="form-label">
-                            <i class="fas fa-id-card"></i>
-                            NIP
-                        </label>
-                        <select class="form-control" id="teacher-nip" required="">
-                            <option value="">-- Pilih NIP --</option>
-                            <option value="196706201994122001">196706201994122001</option>
-                            <option value="196510231996011002">196510231996011002</option>
-                            <option value="197207291997022002">197207291997022002</option>
-                            <option value="196904082000121001">196904082000121001</option>
-                            <option value="197407022003122004">197407022003122004</option>
-                            <option value="196901121994032010">196901121994032010</option>
-                            <option value="196603261994122004">196603261994122004</option>
-                            <option value="197104162003122006">197104162003122006</option>
-                            <option value="197008022002122004">197008022002122004</option>
-                            <option value="197102232002122004">197102232002122004</option>
-                            <option value="197305272003121002">197305272003121002</option>
-                            <option value="197402132005011008">197402132005011008</option>
-                            <option value="197303272005012009">197303272005012009</option>
-                            <option value="197912092005011004">197912092005011004</option>
-                            <option value="197509082008012008">197509082008012008</option>
-                            <option value="197209022006041013">197209022006041013</option>
-                            <option value="197503222006041002">197503222006041002</option>
-                            <option value="198304252009032009">198304252009032009</option>
-                            <option value="196805102005012011">196805102005012011</option>
-                            <option value="197005212007012014">197005212007012014</option>
-                            <option value="197408042008012009">197408042008012009</option>
-                            <option value="197505052008011021">197505052008011021</option>
-                            <option value="198110232006041010">198110232006041010</option>
-                            <option value="197804232010011009">197804232010011009</option>
-                            <option value="197907032010012019">197907032010012019</option>
-                            <option value="197807142009031006">197807142009031006</option>
-                            <option value="198409032010011012">198409032010011012</option>
-                            <option value="198603312011011003">198603312011011003</option>
-                            <option value="199012292014021001">199012292014021001</option>
-                            <option value="199201212014022001">199201212014022001</option>
-                            <option value="198912142014022001">198912142014022001</option>
-                            <option value="197601072008011009">197601072008011009</option>
-                            <option value="197311032008011002">197311032008011002</option>
-                            <option value="199208262020122009">199208262020122009</option>
-                            <option value="199704112020122011">199704112020122011</option>
-                            <option value="197010222022211001">197010222022211001</option>
-                            <option value="198010172022211002">198010172022211002</option>
-                            <option value="198503072022212028">198503072022212028</option>
-                            <option value="198511182022212012">198511182022212012</option>
-                            <option value="198802242022212013">198802242022212013</option>
-                            <option value="198811042022211004">198811042022211004</option>
-                            <option value="198906292022212008">198906292022212008</option>
-                            <option value="198909222022212005">198909222022212005</option>
-                            <option value="199112202022211007">199112202022211007</option>
-                            <option value="199201312022212011">199201312022212011</option>
-                            <option value="199210042022212007">199210042022212007</option>
-                            <option value="199304032022212014">199304032022212014</option>
-                            <option value="199311282022212011">199311282022212011</option>
-                            <option value="199401192022211003">199401192022211003</option>
-                            <option value="199604032022212009">199604032022212009</option>
-                            <option value="199610102022212008">199610102022212008</option>
-                            <option value="198610232022211006">198610232022211006</option>
-                            <option value="197804272023212002">197804272023212002</option>
-                            <option value="197811142023212001">197811142023212001</option>
-                            <option value="198207132023212011">198207132023212011</option>
-                            <option value="198603172023211003">198603172023211003</option>
-                            <option value="198606092023211007">198606092023211007</option>
-                            <option value="198708212023212018">198708212023212018</option>
-                            <option value="199009052023211004">199009052023211004</option>
-                            <option value="199104242023212024">199104242023212024</option>
-                            <option value="199210112023212020">199210112023212020</option>
-                            <option value="199606302023212006">199606302023212006</option>
-                            <option value="198512112023211006">198512112023211006</option>
-                            <option value="198603182024212004">198603182024212004</option>
-                            <option value="199410172024212021">199410172024212021</option>
-                            <option value="199607212024212021">199607212024212021</option>
-                            <option value="197406182025211007">197406182025211007</option>
-                            <option value="197512172025212006">197512172025212006</option>
-                            <option value="197810082025212008">197810082025212008</option>
-                            <option value="198411252025211021">198411252025211021</option>
-                            <option value="199301062025212023">199301062025212023</option>
-                            <option value="199310162025211021">199310162025211021</option>
-                            <option value="199312262025212012">199312262025212012</option>
-                            <option value="-">-</option>
-                            <option value="-">-</option>
-                            <option value="-">-</option>
-                        </select>
+                        <label class="form-label"><i class="fas fa-id-card"></i> NIP</label>
+                        <input type="text" class="form-control" id="teacher-nip" placeholder="NIP akan terisi otomatis" readonly style="background-color: #e9ecef; cursor: not-allowed;">
                     </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">
-                            <i class="fas fa-users"></i>
-                            Kelas
-                        </label>
-                        <input type="text" class="form-control" required="" placeholder="Contoh: X RPL 1">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">
-                            <i class="fas fa-calendar-alt"></i>
-                            Semester
-                        </label>
-                        <select class="form-control" id="semester" required="">
-                            <option value="">-- Pilih Semester --</option>
-                            <option value="Gasal">Gasal</option>
-                            <option value="Genap">Genap</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">
-                            <i class="fas fa-calendar-day"></i>
-                            Tanggal Pertemuan
-                        </label>
-                        <input type="date" class="form-control" required="">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">
-                            <i class="fas fa-clock"></i>
-                            Waktu
-                        </label>
-                        <input type="time" class="form-control" required="">
-                    </div>
+
+                    <div class="form-group"><label class="form-label"><i class="fas fa-users"></i> Kelas</label><input type="text" class="form-control" required="" placeholder="Contoh: X RPL 1"></div><div class="form-group"><label class="form-label"><i class="fas fa-calendar-alt"></i> Semester</label><select class="form-control" id="semester" required=""><option value="">-- Pilih Semester --</option><option value="Gasal">Gasal</option><option value="Genap">Genap</option></select></div><div class="form-group"><label class="form-label"><i class="fas fa-calendar-day"></i> Tanggal Pertemuan</label><input type="date" class="form-control" required=""></div><div class="form-group"><label class="form-label"><i class="fas fa-clock"></i> Waktu</label><input type="time" class="form-control" required=""></div>
                 </div>
-                
-                <div class="section">
-                    <div class="section-header">
-                        <i class="fas fa-bullseye"></i>
-                        Tujuan Pertemuan
-                    </div>
-                    <div class="section-body">
-                        <div class="checkbox-group">
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="academic">
-                                <label for="academic">Pemantauan Akademik</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="character">
-                                <label for="character">Pembinaan Karakter</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="welfare">
-                                <label for="welfare">Kesejahteraan Siswa</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="skills">
-                                <label for="skills">Keterampilan</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="communication">
-                                <label for="communication">Komunikasi &amp; Refleksi</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="section">
-                    <div class="section-header">
-                        <i class="fas fa-tasks"></i>
-                        Aktivitas yang Dilakukan
-                    </div>
-                    <div class="section-body">
-                        <div class="activity-grid">
-                            <div class="activity-card">
-                                <div class="activity-title">
-                                    <i class="fas fa-graduation-cap"></i>
-                                    1. Pemantauan Akademik
-                                </div>
-                                <select class="activity-select" id="academic-activity">
-                                    <option value="">-- Pilih Kegiatan --</option>
-                                    <option value="Mengecek nilai ulangan/rapor siswa">Mengecek nilai ulangan/rapor siswa</option>
-                                    <option value="Membahas strategi belajar efektif">Membahas strategi belajar efektif</option>
-                                    <option value="Konsultasi belajar secara individu">Konsultasi belajar secara individu</option>
-                                    <option value="Menyusun jadwal belajar bersama siswa">Menyusun jadwal belajar bersama siswa</option>
-                                    <option value="Diskusi tindak lanjut bagi siswa dengan nilai rendah">Diskusi tindak lanjut bagi siswa dengan nilai rendah</option>
-                                </select>
-                                
-                                <div class="form-group">
-                                    <label class="form-label">Metode yang Digunakan</label>
-                                    <div class="method-options">
-                                        <div class="checkbox-item">
-                                            <input type="checkbox" id="academic-method1">
-                                            <label for="academic-method1">Presentasi</label>
-                                        </div>
-                                        <div class="checkbox-item">
-                                            <input type="checkbox" id="academic-method2">
-                                            <label for="academic-method2">Latihan</label>
-                                        </div>
-                                        <div class="checkbox-item">
-                                            <input type="checkbox" id="academic-method3">
-                                            <label for="academic-method3">Refleksi</label>
-                                        </div>
-                                        <div class="checkbox-item">
-                                            <input type="checkbox" id="academic-method4">
-                                            <label for="academic-method4">Lainnya</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label class="form-label">Durasi (menit)</label>
-                                    <input type="number" class="form-control duration-input" id="academic-duration" min="1">
-                                </div>
-                            </div>
-                            
-                            <div class="activity-card">
-                                <div class="activity-title">
-                                    <i class="fas fa-heart"></i>
-                                    2. Pembinaan Karakter
-                                </div>
-                                <select class="activity-select" id="character-activity">
-                                    <option value="">-- Pilih Kegiatan --</option>
-                                    <option value="Sharing nilai kejujuran dan disiplin">Sharing nilai kejujuran dan disiplin</option>
-                                    <option value="Kegiatan literasi karakter (baca &amp; diskusi buku/materi inspiratif)">Kegiatan literasi karakter (baca &amp; diskusi buku/materi inspiratif)</option>
-                                    <option value="Simulasi kasus/roleplay (misalnya tentang tanggung jawab)">Simulasi kasus/roleplay (misalnya tentang tanggung jawab)</option>
-                                    <option value="Kegiatan doa/refleksi bersama">Kegiatan doa/refleksi bersama</option>
-                                    <option value="Peneguhan budaya positif sekolah">Peneguhan budaya positif sekolah</option>
-                                    <option value="Keyakinan kepada Tuhan YME dalam hal ini Sholat 5 waktu bagi muslim atau yang non itu Ketaatan Ibadah">Keyakinan kepada Tuhan YME dalam hal ini Sholat 5 waktu bagi muslim atau yang non itu Ketaatan Ibadah</option>
-                                </select>
-                                
-                                <div class="form-group">
-                                    <label class="form-label">Metode yang Digunakan</label>
-                                    <div class="method-options">
-                                        <div class="checkbox-item">
-                                            <input type="checkbox" id="character-method1">
-                                            <label for="character-method1">Presentasi</label>
-                                        </div>
-                                        <div class="checkbox-item">
-                                            <input type="checkbox" id="character-method2">
-                                            <label for="character-method2">Latihan</label>
-                                        </div>
-                                        <div class="checkbox-item">
-                                            <input type="checkbox" id="character-method3">
-                                            <label for="character-method3">Refleksi</label>
-                                        </div>
-                                        <div class="checkbox-item">
-                                            <input type="checkbox" id="character-method4">
-                                            <label for="character-method4">Lainnya</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label class="form-label">Durasi (menit)</label>
-                                    <input type="number" class="form-control duration-input" id="character-duration" min="1">
-                                </div>
-                            </div>
-                            
-                            <div class="activity-card">
-                                <div class="activity-title">
-                                    <i class="fas fa-hands-helping"></i>
-                                    3. Kesejahteraan Siswa
-                                </div>
-                                <select class="activity-select" id="welfare-activity">
-                                    <option value="">-- Pilih Kegiatan --</option>
-                                    <option value="Pendataan kebutuhan siswa (ekonomi, kesehatan, fasilitas belajar)">Pendataan kebutuhan siswa (ekonomi, kesehatan, fasilitas belajar)</option>
-                                    <option value="Sosialisasi program beasiswa atau bantuan">Sosialisasi program beasiswa atau bantuan</option>
-                                    <option value="Diskusi kesehatan mental dan fisik">Diskusi kesehatan mental dan fisik</option>
-                                    <option value="Konseling ringan (permasalahan pribadi/teman sebaya)">Konseling ringan (permasalahan pribadi/teman sebaya)</option>
-                                    <option value="Menghubungkan siswa dengan layanan BK atau pihak terkait">Menghubungkan siswa dengan layanan BK atau pihak terkait</option>
-                                </select>
-                                
-                                <div class="form-group">
-                                    <label class="form-label">Metode yang Digunakan</label>
-                                    <div class="method-options">
-                                        <div class="checkbox-item">
-                                            <input type="checkbox" id="welfare-method1">
-                                            <label for="welfare-method1">Presentasi</label>
-                                        </div>
-                                        <div class="checkbox-item">
-                                            <input type="checkbox" id="welfare-method2">
-                                            <label for="welfare-method2">Latihan</label>
-                                        </div>
-                                        <div class="checkbox-item">
-                                            <input type="checkbox" id="welfare-method3">
-                                            <label for="welfare-method3">Refleksi</label>
-                                        </div>
-                                        <div class="checkbox-item">
-                                            <input type="checkbox" id="welfare-method4">
-                                            <label for="welfare-method4">Lainnya</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label class="form-label">Durasi (menit)</label>
-                                    <input type="number" class="form-control duration-input" id="welfare-duration" min="1">
-                                </div>
-                            </div>
-                            
-                            <div class="activity-card">
-                                <div class="activity-title">
-                                    <i class="fas fa-tools"></i>
-                                    4. Keterampilan Siswa
-                                </div>
-                                <select class="activity-select" id="skills-activity">
-                                    <option value="">-- Pilih Kegiatan --</option>
-                                    <option value="Pelatihan keterampilan komunikasi (public speaking, presentasi)">Pelatihan keterampilan komunikasi (public speaking, presentasi)</option>
-                                    <option value="Simulasi kerja tim atau kepemimpinan kecil">Simulasi kerja tim atau kepemimpinan kecil</option>
-                                    <option value="Workshop kewirausahaan sederhana">Workshop kewirausahaan sederhana</option>
-                                    <option value="Lomba kreativitas (poster, video pendek, karya tulis)">Lomba kreativitas (poster, video pendek, karya tulis)</option>
-                                    <option value="Kegiatan problem solving / studi kasus nyata">Kegiatan problem solving / studi kasus nyata</option>
-                                </select>
-                                
-                                <div class="form-group">
-                                    <label class="form-label">Metode yang Digunakan</label>
-                                    <div class="method-options">
-                                        <div class="checkbox-item">
-                                            <input type="checkbox" id="skills-method1">
-                                            <label for="skills-method1">Presentasi</label>
-                                        </div>
-                                        <div class="checkbox-item">
-                                            <input type="checkbox" id="skills-method2">
-                                            <label for="skills-method2">Latihan</label>
-                                        </div>
-                                        <div class="checkbox-item">
-                                            <input type="checkbox" id="skills-method3">
-                                            <label for="skills-method3">Refleksi</label>
-                                        </div>
-                                        <div class="checkbox-item">
-                                            <input type="checkbox" id="skills-method4">
-                                            <label for="skills-method4">Lainnya</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label class="form-label">Durasi (menit)</label>
-                                    <input type="number" class="form-control duration-input" id="skills-duration" min="1">
-                                </div>
-                            </div>
-                            
-                            <div class="activity-card">
-                                <div class="activity-title">
-                                    <i class="fas fa-comments"></i>
-                                    5. Komunikasi &amp; Refleksi
-                                </div>
-                                <select class="activity-select" id="communication-activity">
-                                    <option value="">-- Pilih Kegiatan --</option>
-                                    <option value="Forum kelas untuk menyampaikan aspirasi siswa">Forum kelas untuk menyampaikan aspirasi siswa</option>
-                                    <option value="Refleksi individu: menulis pengalaman belajar minggu ini">Refleksi individu: menulis pengalaman belajar minggu ini</option>
-                                    <option value="Diskusi kelompok tentang permasalahan kelas">Diskusi kelompok tentang permasalahan kelas</option>
-                                    <option value="Pertemuan orang tua/wali siswa">Pertemuan orang tua/wali siswa</option>
-                                    <option value="Menyusun komitmen kelas bersama">Menyusun komitmen kelas bersama</option>
-                                </select>
-                                
-                                <div class="form-group">
-                                    <label class="form-label">Metode yang Digunakan</label>
-                                    <div class="method-options">
-                                        <div class="checkbox-item">
-                                            <input type="checkbox" id="communication-method1">
-                                            <label for="communication-method1">Presentasi</label>
-                                        </div>
-                                        <div class="checkbox-item">
-                                            <input type="checkbox" id="communication-method2">
-                                            <label for="communication-method2">Latihan</label>
-                                        </div>
-                                        <div class="checkbox-item">
-                                            <input type="checkbox" id="communication-method3">
-                                            <label for="communication-method3">Refleksi</label>
-                                        </div>
-                                        <div class="checkbox-item">
-                                            <input type="checkbox" id="communication-method4">
-                                            <label for="communication-method4">Lainnya</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label class="form-label">Durasi (menit)</label>
-                                    <input type="number" class="form-control duration-input" id="communication-duration" min="1">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="section">
-                    <div class="section-header">
-                        <i class="fas fa-user-check"></i>
-                        Partisipasi Siswa
-                    </div>
-                    <div class="section-body">
-                        <div class="checkbox-group">
-                            <div class="checkbox-item">
-                                <input type="radio" name="participation" id="present">
-                                <label for="present">Hadir</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="radio" name="participation" id="permitted">
-                                <label for="permitted">Izin</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="radio" name="participation" id="unexcused">
-                                <label for="unexcused">Tanpa Keterangan</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="section">
-                    <div class="section-header">
-                        <i class="fas fa-clipboard-check"></i>
-                        Hasil Pertemuan
-                    </div>
-                    <div class="section-body">
-                        <div class="form-group">
-                            <textarea class="form-control" rows="3" placeholder="Ringkasan hasil pertemuan"></textarea>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="section">
-                    <div class="section-header">
-                        <i class="fas fa-tasks"></i>
-                        Tindak Lanjut
-                    </div>
-                    <div class="section-body">
-                        <div class="checkbox-group">
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="parents">
-                                <label for="parents">Komunikasi dengan orang tua</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="counseling">
-                                <label for="counseling">Bimbingan konseling</label>
-                            </div>
-                            <div class="checkbox-item">
-                                <input type="checkbox" id="coordination">
-                                <label for="coordination">Koordinasi dengan guru mata pelajaran</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="section">
-                    <div class="section-header">
-                        <i class="fas fa-user-edit"></i>
-                        Refleksi Guru Wali
-                    </div>
-                    <div class="section-body">
-                        <div class="two-column">
-                            <div class="form-group">
-                                <label class="form-label">
-                                    <i class="fas fa-thumbs-up"></i>
-                                    Hal yang Baik
-                                </label>
-                                <textarea class="form-control" rows="3"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">
-                                    <i class="fas fa-thumbs-down"></i>
-                                    Hal yang Perlu Diperbaiki
-                                </label>
-                                <textarea class="form-control" rows="3"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
+
                 <div class="form-group no-print">
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-save"></i> Simpan Laporan
-                    </button>
-                    <button type="button" class="btn btn-secondary">
-                        <i class="fas fa-sync"></i> Reset Form
-                    </button>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Simpan Laporan</button>
+                    <button type="button" class="btn btn-secondary"><i class="fas fa-sync"></i> Reset Form</button>
                 </div>
             </form>
             
             <div class="report-date">Purbalingga, <span id="current-date"></span></div>
             
             <div class="signature-section">
-                <div class="signature-box">
-                    <p>Mengetahui</p>
-                    <p>Kepala SMK N 1 Purbalingga</p>
-                    <div class="signature-line"></div>
-                    <p class="signature-name">Maryono, S.Pd., M.Si.</p>
-                    <p class="signature-nip">NIP. 19660701 200012 1 002</p>
-                </div>
-                
-                <div class="signature-box">
-                    <p>WKS 1 Kurikulum,</p>
-                    <div class="signature-line"></div>
-                    <p class="signature-name">Satyo Nugroho, S.Kom.</p>
-                    <p class="signature-nip">NIP. 19780714 200903 1 006</p>
-                </div>
+                <div class="signature-box"><p>Mengetahui</p><p>Kepala SMK N 1 Purbalingga</p><div class="signature-line"></div><p class="signature-name">Maryono, S.Pd., M.Si.</p><p class="signature-nip">NIP. 19660701 200012 1 002</p></div><div class="signature-box"><p>WKS 1 Kurikulum,</p><div class="signature-line"></div><p class="signature-name">Satyo Nugroho, S.Kom.</p><p class="signature-nip">NIP. 19780714 200903 1 006</p></div>
                 
                 <div class="signature-box">
                     <p>Guru Wali</p>
-                    <div class="signature-line"></div>
-                    <p class="signature-name" id="teacher-signature">…………………………………</p>
-                    <p class="signature-nip" id="teacher-nip-signature">NIP. …………………………</p>
+                    <canvas id="signature-canvas" width="250" height="100" style="border: 1px dashed #ccc; border-radius: 8px; margin-top: 1rem; cursor: crosshair;"></canvas>
+                    <button type="button" id="clear-signature" class="btn btn-secondary no-print" style="margin-top: 0.5rem; padding: 0.4rem 0.8rem; font-size: 0.9rem;"><i class="fas fa-eraser"></i> Bersihkan</button>
+                    <p class="signature-name" id="teacher-signature" style="margin-top: 1rem;">..............................</p>
+                    <p class="signature-nip" id="teacher-nip-signature">NIP. ......................</p>
                 </div>
             </div>
         </div>
         
         <div class="description">
-            <div class="description-title">Tentang Guru Wali</div>
-            <p>Guru Wali adalah Guru mata pelajaran yang ditugaskan oleh kepala sekolah untuk mendampingi perkembangan peserta didik secara menyeluruh atau Holistik (akademik, karakter, dan sosial) sejak terdaftar hingga lulus, sesuai dengan Permendikdasmen Nomor 11 Tahun 2025 tentang Pemenuhan Beban Kerja Guru.</p>
-        </div>
+            </div>
     </div>
     
     <script>
-        // Data guru dan NIP
+    document.addEventListener('DOMContentLoaded', function() {
         const teacherData = {
-            "Dra. Sri Mularsih": "196706201994122001",
-            "Drs. Fiva Widiarto": "196510231996011002",
-            "Wahyu Budi Susapti, S.Pd, MM.": "197207291997022002",
-            "Marwoto, S.Pd, S.Kom": "196904082000121001",
-            "Sri Endah Swarastuti, S.Pd": "197407022003122004",
-            "Dra. Cukat Budi Rah</script></body></html>
+            // ... Data guru lengkap di sini ...
+            "Dra. Sri Mularsih":"196706201994122001","Drs. Fiva Widiarto":"196510231996011002","Wahyu Budi Susapti, S.Pd, MM.":"197207291997022002","Marwoto, S.Pd, S.Kom":"196904082000121001","Sri Endah Swarastuti, S.Pd":"197407022003122004","Dra. Cukat Budi Rahayu":"196901121994032010","Dra. Diah Ayu Supriyanti":"196603261994122004","Justina Trirahaju Leksanawati, S.Pd., M.Si.":"197104162003122006","Sri Wahyuni, S.Pd":"197008022002122004","Dwi Agus Tri M.M., S.Pd":"197102232002122004","Sumardi, S.Pd., S.Kom":"197305272003121002","Agung Pamuji, S.Pd":"197402132005011008","Retnowati, S.Pd":"197303272005012009","Tony Eka Martin Wibowo, S.Si.":"197912092005011004","Nur Romlah, S.Pd":"197509082008012008","Deddy Suwito, S.Kom":"197209022006041013","Agus Wuryanto, S.Pd":"197503222006041002","Tri Puji Utami, S.Kom":"198304252009032009","Puji Pertiwi Sayekti, S.Pd":"196805102005012011","Nur Fajriyahti, S.Pd.":"197005212007012014","Srirahayu, S.Pd.":"197408042008012009","Romidin, S.Pd":"197505052008011021","Teguh Cahyono, S.Pd.":"198110232006041010","Seto Eko Purwanto, S.Si":"197804232010011009","Nelly Amaliyah, S.Psi":"197907032010012019","Satyo Nugroho, S.Kom.":"197807142009031006","Suratno, S.Pd":"198409032010011012","Vektor Realita Aditopo, S.Pd":"198603312011011003","Adi Setiawan, S.Pd.":"199012292014021001","Galih Tyas Anjari, S.Pd.":"199201212014022001","Deti Lestiyorini, S.Pd.":"198912142014022001","Mahzun, S.Pd I":"197601072008011009","Sugeng Pitoyo, S.Pd.":"197311032008011002","Asriyatun, S.Pd":"199208262020122009","Nur Laeli, S.Pd":"199704112020122011","Sepudin Zupri, S.Kom":"197010222022211001","Arif Nurokhman, S.Pd":"198010172022211002","Elis Sugiarti, S.Pd.":"198503072022212028","Sudiyarti, S.Pd":"198511182022212012","Otiah, S.Pd.":"198802242022212013","Novaristya Widyasmara Pamungkas, S.Pd":"198811042022211004","Menik Yuni Hartini, S.Pd.":"198906292022212008","Baiq Nur Aisyah, S.Pd.":"198909222022212005","Sulistiono, S.Pd.":"199112202022211007","Isria Rizqona Firdausyi, S.Pd.":"199201312022212011","Hindun Fatmawati, S.Pd.":"199210042022212007","Ana Nurlatifah, S.Pd.":"199304032022212014","Dwi Inayah Rahmawati, M.Pd.":"199311282022212011","Danu Dwi Jatmiko, S.Pd.":"199401192022211003","Restu Afri Widhi Hastutiningsih, S.Pd.":"199604032022212009","Nining Setiani, S.Pd.":"199610102022212008","Kukuh Pribadi, S.Pd.":"198610232022211006","Yekti Apriyoni, S.Pd.":"197804272023212002","Novita Adhimurti, S.Pd.":"197811142023212001","Khamsyatun Yudiana, S.Pd.I.":"198207132023212011","Nanang Cahyana, S.Pd.Ing.":"198603172023211003","Waskito Ismu Hastomo, S.Pd.":"198606092023211007","Lely Erawati, S.Pd.":"198708212023212018","Septian Endro Laksono, S.Pd.":"199009052023211004","Firmanika Rozaqi, S.Pd.":"199104242023212024","Devi Artati, S.Pd.":"199210112023212020","Soviatun Khasanah, S.Pd.":"199606302023212006","Miftah Iskandar, S.Pd.":"198512112023211006","Dista Puspitasari Adi, S.Pd.":"198603182024212004","Rita Wijiarti, S.Pd.":"199410172024212021","Safa Aulia Astri, S.Sos":"199607212024212021","Agus Sutono, S.Pd.":"197406182025211007","Yanti Karadina, S.Pd.":"197512172025212006","Widia Sukaesih, S.E.":"197810082025212008","Triyanto, S.Pd.":"198411252025211021","Inayatul Munawaroh, S.Pd.":"199301062025212023","Danu Setio Aji, S.Pd.":"199310162025211021","Hera Dwi Suryandari, S.Pd.":"199312262025212012","Slamet Suparman, S.Pd.":"-","Devi Dwi Wahyuni, S.Pd.":"-","Muhammad Idris Afandi, S.S., M.Pd.":"-"
+        };
+        const teacherNameSelect = document.getElementById('teacher-name');
+        const teacherNipInput = document.getElementById('teacher-nip'); // Diubah menjadi Input
+        const teacherSignature = document.getElementById('teacher-signature');
+        const teacherNipSignature = document.getElementById('teacher-nip-signature');
+        const currentDateSpan = document.getElementById('current-date');
+        const reportForm = document.getElementById('reportForm');
+        const resetButton = document.querySelector('.btn-secondary');
+
+        // Fungsi ini sekarang hanya mengupdate NIP dan Tanda Tangan
+        function updateNipAndSignature() {
+            const selectedTeacher = teacherNameSelect.value;
+            const nip = teacherData[selectedTeacher] || '';
+            
+            teacherNipInput.value = nip; // Mengisi value dari input
+            
+            if (selectedTeacher) {
+                teacherSignature.textContent = selectedTeacher;
+                teacherNipSignature.textContent = 'NIP. ' + (nip || '......................');
+            } else {
+                teacherSignature.textContent = '..............................';
+                teacherNipSignature.textContent = 'NIP. ......................';
+                teacherNipInput.value = ''; // Kosongkan juga NIP input
+            }
+        }
+
+        teacherNameSelect.addEventListener('change', updateNipAndSignature);
+
+        function setCurrentDate() {
+            const today = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            currentDateSpan.textContent = today.toLocaleDateString('id-ID', options);
+        }
+        setCurrentDate();
+
+        resetButton.addEventListener('click', function() {
+            reportForm.reset();
+            updateNipAndSignature(); // Panggil fungsi ini agar signature juga ter-reset
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // Bersihkan kanvas juga
+        });
+        
+        reportForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Laporan berhasil disimpan! (Ini hanya simulasi)');
+        });
+
+        // --- Kode untuk Kanvas Tanda Tangan ---
+        const canvas = document.getElementById('signature-canvas');
+        const ctx = canvas.getContext('2d');
+        const clearButton = document.getElementById('clear-signature');
+        let isDrawing = false;
+        let lastX = 0; let lastY = 0;
+
+        function draw(e) { /* ... fungsi draw lengkap ... */ if(!isDrawing)return;e.preventDefault();let cX,cY;if(e.type.includes('mouse')){cX=e.offsetX;cY=e.offsetY;}else{const r=canvas.getBoundingClientRect();cX=e.touches[0].clientX-r.left;cY=e.touches[0].clientY-r.top;}ctx.strokeStyle='#000';ctx.lineWidth=2;ctx.lineCap='round';ctx.lineJoin='round';ctx.beginPath();ctx.moveTo(lastX,lastY);ctx.lineTo(cX,cY);ctx.stroke();[lastX,lastY]=[cX,cY];}
+        canvas.addEventListener('mousedown', (e) => { isDrawing = true; [lastX, lastY] = [e.offsetX, e.offsetY]; });
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', () => isDrawing = false);
+        canvas.addEventListener('mouseout', () => isDrawing = false);
+        canvas.addEventListener('touchstart', (e) => { if(e.touches.length > 0){ isDrawing = true; const r=canvas.getBoundingClientRect(); [lastX, lastY] = [e.touches[0].clientX - r.left, e.touches[0].clientY - r.top]; }});
+        canvas.addEventListener('touchmove', draw);
+        canvas.addEventListener('touchend', () => isDrawing = false);
+        clearButton.addEventListener('click', () => { ctx.clearRect(0, 0, canvas.width, canvas.height); });
+    });
+    </script>
+</body>
+</html>
